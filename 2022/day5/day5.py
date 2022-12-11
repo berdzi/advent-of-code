@@ -76,7 +76,6 @@ def getTopElements(stacks):
 	outStr=""
 	for stack in stacks.values():
 		top = stack[-1]
-		#top = stack.pop()
 		outStr+=top
 	return outStr
 

@@ -1,38 +1,52 @@
-from functools import reduce
-
-def mul(l):
-	return reduce((lambda x,y: x*y),l)
-
-def get_input(fn):
-	f = open(fn,mode="r")	
-	x=f.read().splitlines()
-	f.close()
-	return x
-	
-
-def calculatePaperSize(data):
-	l,w,h = list(map(int,data.split('x')))
-	rects = [l*w,w*h,h*l]
-	size = sum(rects)*2+min(rects)
-	return size
-	
-
-def calculateRibbon(data):
-	lwh = list(map(int,data.split('x')))
-	s1,s2,s3 = sorted(lwh)
-	bow = mul(lwh)
-	return 2*s1+2*s2+bow
-	
-	
+#AX - rock
+#BY - paper
+#CZ - scissors
 
 
-inp = get_input("day2_input.txt")
+#X - lose
+#Y - draw
+#Z - win
+
+def getInput(fn):
+    f=open(fn,"r")
+    x = f.readlines()
+    x = list(map(str.strip,x))
+    f.close()
+    return x
+
+def findMoves(row):
+    results = {'Z': ['CX','AY','BZ'],'X':['BX','CY','AZ'],'Y':['AX','BY','CZ']}
+
+    op,result = row.split(' ')
+    mymoves = results[result]
+    for x in mymoves:
+        if x[0]==op:
+            return op+' '+x[1]
+    
+
+def calc(row):
+    points = {'A':1,'B':2,'C':3,'X':1,'Y':2,'Z':3}
+    wins=['CX','AY','BZ']
+    op,me = row.split(' ')
+
+    pts = 0
+
+    if op+me in wins:
+        pts=pts+6
+    elif points[op]==points[me]:
+        pts=pts+3
+
+    pts=pts+points[me]
+    return pts
+
+inp = getInput("day2_input.txt")
+
 #part 1
-totalPaper = sum(list(map(calculatePaperSize,inp)))
-print(totalPaper)
+total = sum(list(map(calc,inp)))
+print(total)
+
 
 #part 2
-totalRibbon = sum(list(map(calculateRibbon,inp)))
-print(totalRibbon)
-	
-	
+moves = list(map(findMoves,inp))
+total = sum(list(map(calc,moves)))
+print(total)
