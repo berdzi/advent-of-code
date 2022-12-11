@@ -1,14 +1,3 @@
-
-Advent of Code
-
-    [About][Events][Shop][Settings][Log Out]
-
-bergee 17*
-   0x0000|2022
-
-    [Calendar][AoC++][Sponsors][Leaderboard][Stats]
-
-Our sponsors help make Advent of Code possible:
 --- Day 10: Cathode-Ray Tube ---
 
 You avoid the ropes, plunge into the river, and swim to shore.
@@ -333,10 +322,3 @@ Allowing the program to run to completion causes the CRT to produce the followin
 #######.......#######.......#######.....
 
 Render the image given by your program. What eight capital letters appear on your CRT?
-
-Answer:
-
-Although it hasn't changed, you can still get your puzzle input.
-
-You can also [Shareon Twitter Mastodon] this puzzle.
-
